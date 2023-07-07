@@ -2,6 +2,8 @@
 
 namespace App\Product\Application\Query;
 
-class GetProductCollection
+use App\Core\Application\Message\Query;
+
+class GetProductCollection implements Query
 {
 }

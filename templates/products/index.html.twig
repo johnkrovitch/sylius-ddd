@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="row row-cols-4 g-4">
+        {% for product in products %}
+            <div class="col">
+                <a href="{{ path('product_show', {slug: product.slug}) }}"
+                   class="card">
+                    <img src="/media/image/{{ product.image.url }}"
+                         alt="{{ product.name }}"
+                         class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.code|upper }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

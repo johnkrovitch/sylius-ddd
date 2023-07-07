@@ -9,4 +9,6 @@ interface ProductRepositoryInterface
 {
     /** @return Collection<int, Product> */
     public function getProducts(): Collection;
+
+    public function getProductBySlug(string $slug): Product;
 }

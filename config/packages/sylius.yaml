@@ -1,0 +1,254 @@
+imports:
+    - { resource: "@SyliusCoreBundle/Resources/config/app/config.yml" }
+
+    - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
+#    - { resource: "@SyliusApiBundle/Resources/config/app/config.yaml" }
+
+    - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
+#    - { resource: "@SyliusPayPalPlugin/Resources/config/config.yaml" }
+
+parameters:
+    sylius_core.public_dir: '%kernel.project_dir%/public'
+
+#when@dev:
+#    sylius_api:
+#        enabled: true
+
+sylius_addressing:
+    resources:
+        address:
+            classes:
+                model: Sylius\Component\Core\Model\Address
+        country:
+            classes:
+                model: Sylius\Component\Addressing\Model\Country
+        province:
+            classes:
+                model: Sylius\Component\Addressing\Model\Province
+        zone:
+            classes:
+                model: Sylius\Component\Addressing\Model\Zone
+        zone_member:
+            classes:
+                model: Sylius\Component\Addressing\Model\ZoneMember
+
+sylius_attribute:
+    resources:
+        product:
+            attribute:
+                classes:
+                    model: Sylius\Component\Product\Model\ProductAttribute
+                translation:
+                    classes:
+                        model: Sylius\Component\Product\Model\ProductAttributeTranslation
+            attribute_value:
+                classes:
+                    model: Sylius\Component\Product\Model\ProductAttributeValue
+
+sylius_channel:
+    resources:
+        channel:
+            classes:
+                model: Sylius\Component\Core\Model\Channel
+sylius_core:
+    resources:
+        product_image:
+            classes:
+                model: Sylius\Component\Core\Model\ProductImage
+        taxon_image:
+            classes:
+                model: Sylius\Component\Core\Model\TaxonImage
+        product_taxon:
+            classes:
+                model: Sylius\Component\Core\Model\ProductTaxon
+        channel_pricing:
+            classes:
+                model: Sylius\Component\Core\Model\ChannelPricing
+
+sylius_currency:
+    resources:
+        currency:
+            classes:
+                model: Sylius\Component\Currency\Model\Currency
+        exchange_rate:
+            classes:
+                model: Sylius\Component\Currency\Model\ExchangeRate
+
+sylius_customer:
+    resources:
+        customer:
+            classes:
+                model: Sylius\Component\Core\Model\Customer
+        customer_group:
+            classes:
+                model: Sylius\Component\Customer\Model\CustomerGroup
+
+sylius_locale:
+    resources:
+        locale:
+            classes:
+                model: Sylius\Component\Locale\Model\Locale
+
+sylius_order:
+    resources:
+        order:
+            classes:
+                model: Sylius\Component\Core\Model\Order
+        order_item:
+            classes:
+                model: Sylius\Component\Core\Model\OrderItem
+        order_item_unit:
+            classes:
+                model: Sylius\Component\Core\Model\OrderItemUnit
+        adjustment:
+            classes:
+                model: Sylius\Component\Core\Model\Adjustment
+        order_sequence:
+            classes:
+                model: Sylius\Component\Core\Model\OrderSequence
+
+sylius_payment:
+    resources:
+        payment_method:
+            classes:
+                model: Sylius\Component\Core\Model\PaymentMethod
+            translation:
+                classes:
+                    model: Sylius\Component\Payment\Model\PaymentMethodTranslation
+        payment:
+            classes:
+                model: Sylius\Component\Core\Model\Payment
+
+sylius_payum:
+    resources:
+        payment_security_token:
+            classes:
+                model: Sylius\Bundle\PayumBundle\Model\PaymentSecurityToken
+        gateway_config:
+            classes:
+                model: Sylius\Bundle\PayumBundle\Model\GatewayConfig
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: Sylius\Component\Core\Model\Product
+            translation:
+                classes:
+                    model: Sylius\Component\Core\Model\ProductTranslation
+        product_variant:
+            classes:
+                model: Sylius\Component\Core\Model\ProductVariant
+            translation:
+                classes:
+                    model: Sylius\Component\Product\Model\ProductVariantTranslation
+        product_option:
+            classes:
+                model: Sylius\Component\Product\Model\ProductOption
+            translation:
+                classes:
+                    model: Sylius\Component\Product\Model\ProductOptionTranslation
+        product_option_value:
+            classes:
+                model: Sylius\Component\Product\Model\ProductOptionValue
+            translation:
+                classes:
+                    model: Sylius\Component\Product\Model\ProductOptionValueTranslation
+        product_association:
+            classes:
+                model: Sylius\Component\Product\Model\ProductAssociation
+        product_association_type:
+            classes:
+                model: Sylius\Component\Product\Model\ProductAssociationType
+            translation:
+                classes:
+                    model: Sylius\Component\Product\Model\ProductAssociationTypeTranslation
+
+sylius_promotion:
+    resources:
+        catalog_promotion:
+            classes:
+                model: Sylius\Component\Core\Model\CatalogPromotion
+        catalog_promotion_action:
+            classes:
+                model: Sylius\Component\Promotion\Model\CatalogPromotionAction
+        catalog_promotion_scope:
+            classes:
+                model: Sylius\Component\Core\Model\CatalogPromotionScope
+        promotion:
+            classes:
+                model: Sylius\Component\Core\Model\Promotion
+        promotion_rule:
+            classes:
+                model: Sylius\Component\Promotion\Model\PromotionRule
+        promotion_action:
+            classes:
+                model: Sylius\Component\Promotion\Model\PromotionAction
+        promotion_coupon:
+            classes:
+                model: Sylius\Component\Core\Model\PromotionCoupon
+
+sylius_review:
+    resources:
+        product:
+            review:
+                classes:
+                    model: Sylius\Component\Core\Model\ProductReview
+
+sylius_shipping:
+    resources:
+        shipment:
+            classes:
+                model: Sylius\Component\Core\Model\Shipment
+        shipping_method:
+            classes:
+                model: Sylius\Component\Core\Model\ShippingMethod
+            translation:
+                classes:
+                    model: Sylius\Component\Shipping\Model\ShippingMethodTranslation
+        shipping_category:
+            classes:
+                model: Sylius\Component\Shipping\Model\ShippingCategory
+
+sylius_taxation:
+    resources:
+        tax_category:
+            classes:
+                model: Sylius\Component\Taxation\Model\TaxCategory
+        tax_rate:
+            classes:
+                model: Sylius\Component\Core\Model\TaxRate
+
+sylius_taxonomy:
+    resources:
+        taxon:
+            classes:
+                model: Sylius\Component\Core\Model\Taxon
+            translation:
+                classes:
+                    model: Sylius\Component\Taxonomy\Model\TaxonTranslation
+sylius_user:
+    resources:
+        admin:
+            user:
+                classes:
+                    model: Sylius\Component\Core\Model\AdminUser
+        shop:
+            user:
+                classes:
+                    model: Sylius\Component\Core\Model\ShopUser
+        oauth:
+            user:
+                classes:
+                    model: Sylius\Component\User\Model\UserOAuth
+
+sylius_shop:
+    product_grid:
+        include_all_descendants: true
+
+sylius_theme:
+    sources:
+        filesystem:
+            scan_depth: 1
+            directories:
+                - "%kernel.project_dir%/themes"

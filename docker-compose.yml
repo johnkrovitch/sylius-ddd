@@ -5,13 +5,15 @@ services:
   database:
     image: mariadb:${MARIADB_VERSION:-11}
     environment:
-      MARIADB_DB: ${MARIADB__DB:-app}
+      MARIADB_DATABASE: ${MARIADB__DB:-app}
       # You should definitely change the password in production
       MARIADB_PASSWORD: ${MARIADB_PASSWORD:-test}
       MARIADB_USER: ${MARIADB_USER:-app}
       MARIADB_ROOT_PASSWORD: admin
+    ports:
+      - 3306:3306
     volumes:
-      - /docker/mysql/data:/var/lib/mysql/data:rw
+      - ./docker/mysql/data:/var/lib/mysql
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###

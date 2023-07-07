@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Product\Infrastructure\Sylius\Mapper;
+namespace App\Product\Infrastructure\Mapper;
 
 use App\Product\Domain\Model\Product;
 use Sylius\Component\Core\Model\ProductInterface;

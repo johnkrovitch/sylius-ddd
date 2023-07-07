@@ -3,8 +3,20 @@
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+imports:
+    - { resource: 'services/*'}
+
 parameters:
     locale: 'en'
+
+    sylius.model.catalog_promotion.class: Sylius\Component\Promotion\Model\CatalogPromotion
+    sylius.state_machine.class: Sylius\Component\Resource\StateMachine\StateMachine
+    sylius.model.order.class: Sylius\Component\Core\Model\Order
+    sylius.model.shipment.class: Sylius\Component\Core\Model\Shipment
+    sylius.model.payment.class: Sylius\Component\Payment\Model\PaymentMethod
+#    sylius.model.product.class: Sylius\Component\Product\Model\Product
+    sylius.model.product_review.class: Sylius\Component\Core\Model\ProductReview
+
 
 services:
     # default configuration for services in *this* file
@@ -24,3 +36,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Product\Application\Controller\:
+        resource: '../src/Product/Application/Controller'
+        tags: ['controller.service_arguments']

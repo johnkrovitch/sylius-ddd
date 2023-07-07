@@ -1,0 +1,7 @@
+products_list:
+    path: /products
+    controller: App\Product\Application\Controller\ListProductCollection
+
+product_show:
+    path: /products/{slug}
+    controller: App\Product\Application\Controller\ShowProduct
