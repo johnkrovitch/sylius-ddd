@@ -11,4 +11,6 @@ interface CartRepositoryInterface
     public function get(string $identifier): Cart;
 
     public function add(Cart $cart): void;
+
+    public function create(): Cart;
 }

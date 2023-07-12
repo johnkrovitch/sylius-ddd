@@ -24,7 +24,11 @@ class CartRepository implements CartRepositoryInterface
         /** @var Order $data */
         $data = $this->cartContext->getCart();
 
-        return $this->mapper->map($data);
+        if ($data->getId() === null) {
+            return null;
+        }
+
+        return $this->mapper->toDomain($data);
     }
 
     public function get(string $identifier): Cart
@@ -34,6 +38,11 @@ class CartRepository implements CartRepositoryInterface
 
     public function add(Cart $cart): void
     {
-        // TODO: Implement add() method.
+        $data = $this->mapper->toResource($cart);
+    }
+
+    public function create(): Cart
+    {
+        // TODO: Implement create() method.
     }
 }

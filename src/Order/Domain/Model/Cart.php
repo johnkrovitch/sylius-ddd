@@ -11,7 +11,7 @@ class Cart
     private Collection $items;
 
     public function __construct(
-        private int $identifier,
+        private string $number,
         iterable $items = []
     )
     {
@@ -25,9 +25,9 @@ class Cart
         }
     }
 
-    public function identifier(): int
+    public function number(): string
     {
-        return $this->identifier;
+        return $this->number;
     }
 
     public function addToCart(

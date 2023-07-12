@@ -9,11 +9,11 @@ use Sylius\Component\Core\Model\OrderInterface as SyliusOrderInterface;
 
 class CartMapper implements CartMapperInterface
 {
-    public function map(SyliusOrderInterface $order): Cart
+    public function toDomain(SyliusOrderInterface $cart): Cart
     {
         $items = new ArrayCollection();
 
-        foreach ($order->getItems() as $item) {
+        foreach ($cart->getItems() as $item) {
             $items->add(new CartItem(
                 $item->getVariant()->getCode(),
                 $item->getProductName(),
@@ -23,7 +23,13 @@ class CartMapper implements CartMapperInterface
         }
 
         return new Cart(
-            $order->getId(),
+            $cart->getId(),
+            $items,
         );
+    }
+
+    public function toResource(Cart $cart): SyliusOrderInterface
+    {
+        // TODO: Implement toResource() method.
     }
 }
