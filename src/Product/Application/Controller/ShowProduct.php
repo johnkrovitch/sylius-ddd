@@ -5,13 +5,15 @@ namespace App\Product\Application\Controller;
 use App\Core\Application\Bus\CommandBusInterface;
 use App\Core\Application\Bus\QueryBusInterface;
 use App\Order\Application\Command\AddItemToCart;
-use App\Order\Application\Form\Type\AddProductToCartType;
+use App\Order\Application\Form\Type\AddCartItemType;
 use App\Order\Application\View\CartItemView;
 use App\Product\Application\Query\GetProductBySlug;
 use App\Product\Application\View\Factory\ProductViewFactoryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
 class ShowProduct
@@ -22,6 +24,7 @@ class ShowProduct
         private ProductViewFactoryInterface $mapper,
         private FormFactoryInterface $formFactory,
         private Environment $environment,
+        private RouterInterface $router,
     ) {
     }
 
@@ -29,7 +32,7 @@ class ShowProduct
     {
         $model = $this->queryBus->dispatch(new GetProductBySlug($request->attributes->getString('slug')));
         $product = $this->mapper->map($model);
-        $form = $this->formFactory->create(AddProductToCartType::class, new CartItemView(
+        $form = $this->formFactory->create(AddCartItemType::class, new CartItemView(
             $product->slug,
             $product->name,
             $product->price,
@@ -45,6 +48,8 @@ class ShowProduct
                 $data->unitPrice,
                 $data->quantity,
             ));
+
+            return new RedirectResponse($this->router->generate('cart_show'));
         }
 
         return new Response($this->environment->render('products/show.html.twig', [

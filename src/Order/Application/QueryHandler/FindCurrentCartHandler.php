@@ -2,6 +2,7 @@
 
 namespace App\Order\Application\QueryHandler;
 
+use App\Order\Application\Query\FindCurrentCart;
 use App\Order\Application\Query\GetCurrentCart;
 use App\Order\Domain\Model\Cart;
 use App\Order\Domain\Repository\CartRepositoryInterface;
@@ -15,7 +16,7 @@ class FindCurrentCartHandler
     ) {
     }
 
-    public function __invoke(GetCurrentCart $query): ?Cart
+    public function __invoke(FindCurrentCart $query): ?Cart
     {
         return $this->repository->current();
     }

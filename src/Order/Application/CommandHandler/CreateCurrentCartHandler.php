@@ -20,7 +20,10 @@ class CreateCurrentCartHandler
 
     public function __invoke(CreateCurrentCart $command): string
     {
-        $cart = new Cart($this->numberGenerator->generate());
+        $cartNumber = $this->numberGenerator->generate();
+        $cart = new Cart($cartNumber);
         $this->repository->add($cart);
+
+        return $cartNumber;
     }
 }

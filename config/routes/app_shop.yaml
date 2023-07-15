@@ -5,3 +5,7 @@ products_list:
 product_show:
     path: /products/{slug}
     controller: App\Product\Application\Controller\ShowProduct
+
+cart_show:
+    path: /cart
+    controller: App\Order\Application\Controller\ShowCart

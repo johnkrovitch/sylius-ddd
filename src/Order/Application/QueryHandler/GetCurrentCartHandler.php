@@ -20,7 +20,7 @@ class GetCurrentCartHandler
         $cart = $this->repository->current();
 
         if ($cart === null) {
-            $cart = new Cart();
+            throw new \Exception();
         }
 
         return $cart;

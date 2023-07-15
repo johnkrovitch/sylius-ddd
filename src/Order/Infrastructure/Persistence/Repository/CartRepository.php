@@ -38,7 +38,8 @@ class CartRepository implements CartRepositoryInterface
 
     public function add(Cart $cart): void
     {
-        $data = $this->mapper->toResource($cart);
+        $syliusOrder = $this->mapper->toResource($cart);
+        $this->orderRepository->add($syliusOrder);
     }
 
     public function create(): Cart

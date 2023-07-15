@@ -30,6 +30,12 @@ class Cart
         return $this->number;
     }
 
+    /** @return Collection<int, CartItem> */
+    public function items(): Collection
+    {
+        return $this->items;
+    }
+
     public function addToCart(
         string $reference,
         string $productName,
