@@ -35,7 +35,7 @@ class CartItemMapper implements CartItemMapperInterface
             ->first()
         ;
 
-        if ($syliusOrderItem === null) {
+        if ($syliusOrderItem === false) {
             $syliusOrderItem = new OrderItem();
         }
         $productVariant = $this->productVariantRepository->findOneBy(['code' => $item->reference()]);

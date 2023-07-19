@@ -2,6 +2,7 @@
 
 namespace App\Order\Domain\Model;
 
+use App\Channel\Domain\Model\Channel;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -12,6 +13,7 @@ class Cart
 
     public function __construct(
         private string $number,
+        private Channel $channel,
         iterable $items = []
     )
     {
@@ -48,5 +50,10 @@ class Cart
             $unitPrice,
             $quantity
         ));
+    }
+
+    public function channel(): Channel
+    {
+        return $this->channel;
     }
 }

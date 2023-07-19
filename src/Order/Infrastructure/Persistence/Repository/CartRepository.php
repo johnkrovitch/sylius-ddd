@@ -31,9 +31,26 @@ class CartRepository implements CartRepositoryInterface
         return $this->mapper->toDomain($data);
     }
 
-    public function get(string $identifier): Cart
+    public function get(string $cartNumber): Cart
     {
-        // TODO: Implement get() method.
+        $cart = $this->find($cartNumber);
+
+        if ($cart === null) {
+            throw new \Exception();
+        }
+
+        return $cart;
+    }
+
+    public function find(string $cartNumber): ?Cart
+    {
+        $syliusCart = $this->orderRepository->findOneBy(['number' => $cartNumber]);
+
+        if ($syliusCart === null) {
+            return null;
+        }
+
+        return $this->mapper->toDomain($syliusCart);
     }
 
     public function add(Cart $cart): void

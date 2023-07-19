@@ -8,7 +8,9 @@ interface CartRepositoryInterface
 {
     public function current(): ?Cart;
 
-    public function get(string $identifier): Cart;
+    public function get(string $cartNumber): Cart;
+
+    public function find(string $cartNumber): ?Cart;
 
     public function add(Cart $cart): void;
 

@@ -2,6 +2,7 @@
 
 namespace App\Order\Infrastructure\Mapper;
 
+use App\Channel\Application\Mapper\ChannelMapperInterface;
 use App\Order\Domain\Model\Cart;
 use App\Order\Domain\Model\CartItem;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -16,6 +17,7 @@ class CartMapper implements CartMapperInterface
     public function __construct(
         private SyliusOrderRepositoryInterface $orderRepository,
         private CartItemMapperInterface $cartItemMapper,
+        private ChannelMapperInterface $channelMapper,
     )
     {
     }
@@ -29,7 +31,8 @@ class CartMapper implements CartMapperInterface
         }
 
         return new Cart(
-            $syliusCart->getId(),
+            $syliusCart->getNumber(),
+            $this->channelMapper->toDomain($syliusCart->getChannel()),
             $items,
         );
     }
@@ -37,6 +40,7 @@ class CartMapper implements CartMapperInterface
     public function toResource(Cart $cart): SyliusOrderInterface
     {
         $syliusOrder = $this->orderRepository->findOneBy(['number' => $cart->number()]);
+        $syliusChannel = $this->channelMapper->toResource($cart->channel());
 
         if ($syliusOrder === null) {
             $syliusOrder = new SyliusOrder();
@@ -44,6 +48,7 @@ class CartMapper implements CartMapperInterface
         }
         $syliusOrder->setCurrencyCode('EUR');
         $syliusOrder->setLocaleCode('en');
+        $syliusOrder->setChannel($syliusChannel);
 
         foreach ($cart->items() as $item) {
             $syliusOrderItem = $this->cartItemMapper->toResource($item, $syliusOrder);
