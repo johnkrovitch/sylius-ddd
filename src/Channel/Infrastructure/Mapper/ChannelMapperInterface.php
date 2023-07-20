@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Channel\Application\Mapper;
+namespace App\Channel\Infrastructure\Mapper;
 
 use App\Channel\Domain\Model\Channel;
 use Sylius\Component\Core\Model\ChannelInterface as SyliusChannelInterface;

@@ -2,8 +2,8 @@
 
 namespace App\Order\Infrastructure\Order\Storage;
 
-use App\Channel\Application\Mapper\ChannelMapperInterface;
 use App\Channel\Domain\Model\Channel;
+use App\Channel\Infrastructure\Mapper\ChannelMapperInterface;
 use App\Order\Domain\Model\Cart;
 use App\Order\Domain\Order\Storage\CartStorageInterface;
 use App\Order\Infrastructure\Mapper\CartMapperInterface;

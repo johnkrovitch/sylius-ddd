@@ -2,9 +2,9 @@
 
 namespace App\Channel\Infrastructure\Persistence\Repository;
 
-use App\Channel\Application\Mapper\ChannelMapperInterface;
 use App\Channel\Domain\Model\Channel;
 use App\Channel\Domain\Repository\ChannelRepositoryInterface;
+use App\Channel\Infrastructure\Mapper\ChannelMapperInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface as SyliusChannelRepositoryInterface;
 
 class ChannelRepository implements ChannelRepositoryInterface

@@ -21,6 +21,9 @@ class CartViewFactory implements CartViewFactoryInterface
         return new CartView(
             $cart->number(),
             $cart->items()->map(fn(CartItem $item) => $this->cartItemViewFactory->create($item)),
+            $cart->itemsTotal(),
+            $cart->taxTotal(),
+            $cart->total(),
         );
     }
 }

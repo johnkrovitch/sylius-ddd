@@ -9,8 +9,10 @@ use App\Order\Application\View\Factory\CartViewFactoryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 use Twig\Environment;
 
+#[AsController]
 class ShowCart
 {
     public function __construct(

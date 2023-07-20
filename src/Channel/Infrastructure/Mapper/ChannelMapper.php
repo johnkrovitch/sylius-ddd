@@ -2,7 +2,6 @@
 
 namespace App\Channel\Infrastructure\Mapper;
 
-use App\Channel\Application\Mapper\ChannelMapperInterface;
 use App\Channel\Domain\Model\Channel;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface as SyliusChannelRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface as SyliusChannelInterface;

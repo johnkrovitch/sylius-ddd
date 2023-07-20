@@ -2,14 +2,11 @@
 
 namespace App\Order\Infrastructure\Mapper;
 
-use App\Channel\Application\Mapper\ChannelMapperInterface;
+use App\Channel\Infrastructure\Mapper\ChannelMapperInterface;
 use App\Order\Domain\Model\Cart;
-use App\Order\Domain\Model\CartItem;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Core\Model\Order as SyliusOrder;
 use Sylius\Component\Core\Model\OrderInterface as SyliusOrderInterface;
-use Sylius\Component\Core\Model\OrderItem;
-use Sylius\Component\Core\Model\OrderItemInterface as SyliusOrderItemInterface;
 use Sylius\Component\Core\Repository\OrderRepositoryInterface as SyliusOrderRepositoryInterface;
 
 class CartMapper implements CartMapperInterface

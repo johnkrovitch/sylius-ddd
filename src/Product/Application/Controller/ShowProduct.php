@@ -7,6 +7,7 @@ use App\Core\Application\Bus\QueryBusInterface;
 use App\Order\Application\Command\AddItemToCart;
 use App\Order\Application\Form\Type\AddCartItemType;
 use App\Order\Application\View\CartItemView;
+use App\Order\Application\View\Factory\CartItemViewFactoryInterface;
 use App\Product\Application\Query\GetProductBySlug;
 use App\Product\Application\View\Factory\ProductViewFactoryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -33,8 +34,9 @@ class ShowProduct
         $model = $this->queryBus->dispatch(new GetProductBySlug($request->attributes->getString('slug')));
         $product = $this->mapper->map($model);
         $form = $this->formFactory->create(AddCartItemType::class, new CartItemView(
-            $product->slug,
+            $product->code,
             $product->name,
+            $product->price,
             $product->price,
         ));
         $form->handleRequest($request);

@@ -52,6 +52,21 @@ class Cart
         ));
     }
 
+    public function itemsTotal(): int
+    {
+        return array_sum($this->items->map(fn(CartItem $item) => $item->total())->toArray());
+    }
+
+    public function taxTotal(): int
+    {
+        return 0;
+    }
+
+    public function total(): int
+    {
+        return $this->itemsTotal() + $this->taxTotal();
+    }
+
     public function channel(): Channel
     {
         return $this->channel;

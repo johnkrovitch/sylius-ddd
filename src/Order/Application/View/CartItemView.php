@@ -8,6 +8,7 @@ class CartItemView
         public string $reference,
         public string $productName,
         public int $unitPrice,
+        public int $total,
         public int $quantity = 1,
     ) {
     }
