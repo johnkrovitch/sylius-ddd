@@ -1,0 +1,43 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+
+imports:
+    - { resource: 'services/*'}
+
+parameters:
+    locale: 'en'
+
+    sylius.model.catalog_promotion.class: Sylius\Component\Promotion\Model\CatalogPromotion
+    sylius.state_machine.class: Sylius\Component\Resource\StateMachine\StateMachine
+    sylius.model.order.class: Sylius\Component\Core\Model\Order
+    sylius.model.shipment.class: Sylius\Component\Core\Model\Shipment
+    sylius.model.payment.class: Sylius\Component\Payment\Model\PaymentMethod
+#    sylius.model.product.class: Sylius\Component\Product\Model\Product
+    sylius.model.product_review.class: Sylius\Component\Core\Model\ProductReview
+
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/{Product,Order}/Domain/Model'
+            - '../src/Kernel.php'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\Product\Application\Controller\:
+        resource: '../src/Product/Application/Controller'
+        tags: ['controller.service_arguments']

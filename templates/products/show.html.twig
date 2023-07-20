@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-6">
+            <img src="/media/image/{{ product.image.url }}"
+                 alt="{{ product.name }}"
+                 width="300">
+        </div>
+        <div class="col">
+            {{ product.name }}
+
+            {{ form_start(form) }}
+            {{ form_row(form) }}
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

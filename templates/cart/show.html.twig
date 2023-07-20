@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {{ form_start(cartForm) }}
+    <table class="table">
+    <tbody>
+    {% for child in cartForm.items %}
+        {% set item = child.vars.data %}
+        <tr>
+            <td>{{ item.productName }}</td>
+            <td>
+                {{ item.unitPrice }}
+            </td>
+            <td>
+                x {{ form_widget(child.quantity) }}
+            </td>
+            <td>
+                {{ item.total }}
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td colspan="3">Total</td>
+        <td>{{ cart.total }}</td>
+    </tr>
+    </tbody>
+    </table>
+
+    <div class="mb-3">
+        <input type="submit" class="btn btn-primary">
+    </div>
+    {{ form_end(cartForm) }}
+
+{% endblock %}

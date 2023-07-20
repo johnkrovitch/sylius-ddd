@@ -1,0 +1,2 @@
+services:
+    Sylius\Bundle\OrderBundle\NumberGenerator\OrderNumberGeneratorInterface: '@sylius.sequential_order_number_generator'
